@@ -6,8 +6,11 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "lodash.camelcase": "^4.3.0",
+    "lodash.upperfirst": "^4.3.1",
     "vue": "2.5.17",
-    "vue-i18n": "^8.22.2"
+    "vue-i18n": "^8.22.2",
+    "vue-router": "^3.4.9"
   },
   "devDependencies": {
     "@vue/cli-service": "~4.2.0",
