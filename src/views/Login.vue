@@ -1,32 +1,38 @@
 <template>
-	<div class="login">
+	<form class="login" @submit="submit">
 		<div class="login__item">
-			<label for="email">{{ $t('email') }}:</label>
+			<label for="email">*{{ $t('email') }}:</label>
 			<input
 				name="email"
+				ref="1"
 				v-model="email"
 				:class="{ 'input-error': $v.email.$error }"
 			/>
 		</div>
 		<div class="login__item">
-			<label for="password">{{ $t('password') }}:</label>
+			<label for="password">*{{ $t('password') }}:</label>
 			<input
 				name="password"
+				ref="2"
 				v-model="password"
 				type="password"
 				:class="{ 'input-error': $v.password.$error }"
 			/>
 		</div>
 
-		<button class="login__submit" @click="submit">{{ $t('logIn') }}</button>
-		<button class="login__register" @click="registration">{{ $t('register') }}</button>
-	</div>
+		<button class="login__submit">{{ $t('logIn') }}</button>
+		<button class="login__register" @click.prevent="registration">
+			{{ $t('register') }}
+		</button>
+	</form>
 </template>
 
 <script>
 	import { required, minLength } from 'vuelidate/lib/validators';
+	import focusMixin from '@/mixins/focusMixin';
 
 	export default {
+		mixins: [focusMixin],
 		data() {
 			return {
 				email: '',
@@ -47,36 +53,13 @@
 				if (this.$v.$invalid) return;
 				console.log('submit', this.email, this.password);
 			},
-			registration() {},
+			registration() {
+				this.$router.push({ name: 'Registration' });
+			},
 		},
 	};
 </script>
 
-<style lang="scss">
-	.login {
-		width: 512px;
-		height: 512px;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		background: lightblue;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		transform: translateX(-50%) translateY(-50%);
-		&__item {
-			display: flex;
-			flex-direction: column;
-			label {
-				margin-bottom: 4px;
-			}
-			input {
-			}
-		}
-		&__submit {
-			width: 144px;
-			height: 40px;
-		}
-	}
+<style lang="scss" scoped>
+	@import '~@/assets/style/login.scss';
 </style>

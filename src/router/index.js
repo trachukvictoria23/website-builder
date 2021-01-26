@@ -10,8 +10,13 @@ function lazyLoadView(view) {
 const routes = [
 	{
 		path: '/',
-		name: 'login',
+		name: 'Login',
 		component: lazyLoadView('Login'),
+	},
+	{
+		path: '/registration',
+		name: 'Registration',
+		component: lazyLoadView('Registration'),
 	},
 ];
 

@@ -5,8 +5,10 @@ import upperFirst from 'lodash.upperfirst';
 import camelCase from 'lodash.camelcase';
 import Vuelidate from 'vuelidate';
 import router from './router/index';
+import { mask } from 'vue-the-mask';
 
 Vue.use(Vuelidate);
+Vue.directive('mask', mask);
 
 const requireComponent = require.context(
 	'./components/app',
