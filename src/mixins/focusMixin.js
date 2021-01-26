@@ -7,7 +7,7 @@ export default {
 	},
 	mounted() {
 		setTimeout(() => {
-			this.$refs[this.focusedInput]?.focus();
+			this.$refs[this.focusedInput].focus();
 		}, 100);
 	},
 	data() {

@@ -18,6 +18,11 @@ const routes = [
 		name: 'Registration',
 		component: lazyLoadView('Registration'),
 	},
+	{
+		path: '/home',
+		name: 'Home',
+		component: lazyLoadView('Home')
+	}
 ];
 
 const router = new VueRouter({
