@@ -3,8 +3,10 @@ import App from './App.vue'
 import i18n from "./plugins/i18n";
 import upperFirst from 'lodash.upperfirst';
 import camelCase from 'lodash.camelcase';
-
+import Vuelidate from 'vuelidate';
 import router from './router/index';
+
+Vue.use(Vuelidate);
 
 const requireComponent = require.context(
 	'./components/app',
