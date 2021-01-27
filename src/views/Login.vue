@@ -1,5 +1,5 @@
 <template>
-	<form class="login" @submit="submit">
+	<form class="login" @submit.prevent="submit">
 		<div class="login__item">
 			<label for="email">*{{ $t('email') }}:</label>
 			<input
@@ -7,6 +7,7 @@
 				ref="1"
 				v-model="email"
 				:class="{ 'input-error': $v.email.$error }"
+				@click="focusedInput = 1"
 			/>
 		</div>
 		<div class="login__item">
@@ -17,6 +18,7 @@
 				v-model="password"
 				type="password"
 				:class="{ 'input-error': $v.password.$error }"
+				@click="focusedInput = 2"
 			/>
 		</div>
 
@@ -51,7 +53,7 @@
 			submit() {
 				this.$v.$touch();
 				if (this.$v.$invalid) return;
-				console.log('submit', this.email, this.password);
+				this.$router.push({ name: 'Home' });
 			},
 			registration() {
 				this.$router.push({ name: 'Registration' });

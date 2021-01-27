@@ -1,5 +1,5 @@
 <template>
-	<form class="registration" @submit="submit">
+	<form class="registration" @submit.prevent="submit">
 		<button class="registration__back" @click.prevent="$router.go(-1)">
 			Back
 		</button>
@@ -10,6 +10,7 @@
 				v-model="email"
 				ref="1"
 				:class="{ 'input-error': $v.email.$error }"
+				@click="focusedInput = 1"
 			/>
 		</div>
 		<div class="login__item">
@@ -20,6 +21,7 @@
 				type="password"
 				ref="2"
 				:class="{ 'input-error': $v.password.$error }"
+				@click="focusedInput = 2"
 			/>
 		</div>
 		<div class="login__item">
@@ -30,6 +32,7 @@
 				type="password"
 				ref="3"
 				:class="{ 'input-error': $v.confirmPassword.$error }"
+				@click="focusedInput = 3"
 			/>
 		</div>
 
@@ -43,6 +46,7 @@
 				ref="4"
 				placeholder="+38(XXX)XXX-XX-XX"
 				:class="{ 'input-error': $v.phone.$error }"
+				@click="focusedInput = 4"
 			/>
 		</div>
 
@@ -85,6 +89,7 @@
 			submit() {
 				this.$v.$touch();
 				if (this.$v.$invalid) return;
+				this.$router.push({ name: 'Home' });
 			},
 		},
 	};

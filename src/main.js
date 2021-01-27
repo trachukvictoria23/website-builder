@@ -1,10 +1,11 @@
-import Vue from 'vue'
-import App from './App.vue'
-import i18n from "./plugins/i18n";
+import Vue from 'vue';
+import App from './App.vue';
+import i18n from './plugins/i18n';
 import upperFirst from 'lodash.upperfirst';
 import camelCase from 'lodash.camelcase';
 import Vuelidate from 'vuelidate';
 import router from './router/index';
+import store from './store';
 import { mask } from 'vue-the-mask';
 
 Vue.use(Vuelidate);
@@ -33,9 +34,9 @@ export const bus = new Vue();
 window.$bus = bus;
 
 new Vue({
-  el: "#app",
-  i18n,
-  router,
-  render: (h) => h(App),
+	el: '#app',
+	i18n,
+	router,
+	store,
+	render: (h) => h(App),
 });
-

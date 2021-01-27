@@ -21,8 +21,13 @@ const routes = [
 	{
 		path: '/home',
 		name: 'Home',
-		component: lazyLoadView('Home')
-	}
+		component: lazyLoadView('Home'),
+	},
+	{
+		path: '/draft',
+		name: 'Draft',
+		component: lazyLoadView('Draft'),
+	},
 ];
 
 const router = new VueRouter({
