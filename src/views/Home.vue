@@ -17,8 +17,8 @@
 		},
 		methods: {
 			createNewProject() {
-				this.$router.push({ name: "Draft" })
-			}
+				this.$router.push({ name: 'Draft' });
+			},
 		},
 	};
 </script>
@@ -27,7 +27,6 @@
 	.home {
 		padding: 40px;
 		&__ul {
-
 		}
 		&__li {
 			list-style: none;
@@ -39,7 +38,6 @@
 			justify-content: center;
 			align-items: center;
 			&--empty {
-
 			}
 		}
 	}

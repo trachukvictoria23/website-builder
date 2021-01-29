@@ -1,15 +1,18 @@
 <template>
     <div class="draft">
         <sidebar />
+        <main-content />
     </div>
 </template>
 
 <script>
 import Sidebar from "@/components/Draft/Sidebar"
+import MainContent from "@/components/Draft/MainContent"
 
 export default {
     components: {
-        Sidebar
+        Sidebar,
+        MainContent
     }
 }
 </script>

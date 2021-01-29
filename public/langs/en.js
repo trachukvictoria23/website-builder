@@ -3,5 +3,6 @@ export default {
 	password: 'Password',
 	logIn: 'Log in',
 	register: 'Register',
-	confirmPassword: 'Confirm password'
+	confirmPassword: 'Confirm password',
+	addNewBlock: 'Add new block'
 };
