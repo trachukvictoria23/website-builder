@@ -10,7 +10,7 @@
 					minLength="1"
 					maxLength="3"
 					v-model="height"
-					@keyPress="isNumber"
+					@keydown="isNumber"
 					@blur="setNewHeight"
 				/>
 				<span>px</span>
@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex"
-import staticMixin from "@/mixins/staticMixin"
+	import { mapGetters } from 'vuex';
+	import staticMixin from '@/mixins/staticMixin';
 
 	export default {
 		data() {
@@ -31,12 +31,12 @@ import staticMixin from "@/mixins/staticMixin"
 		},
 		mixins: [staticMixin],
 		computed: {
-			...mapGetters([
-				"getActiveDraftId"
-			])
+			...mapGetters(['getActiveDraftId']),
 		},
 		created() {
-			this.height = document.getElementById(this.getActiveDraftId).style.height
+			this.height = this.replaceNotDigits(
+				document.getElementById(this.getActiveDraftId).style.height
+			);
 		},
 		methods: {
 			setNewHeight() {
