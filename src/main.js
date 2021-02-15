@@ -7,6 +7,7 @@ import Vuelidate from 'vuelidate';
 import router from './router/index';
 import store from './store';
 import { mask } from 'vue-the-mask';
+//import vuetify from '@/plugins/vuetify';
 
 Vue.use(Vuelidate);
 Vue.directive('mask', mask);
@@ -35,6 +36,7 @@ window.$bus = bus;
 
 new Vue({
 	el: '#app',
+	//vuetify,
 	i18n,
 	router,
 	store,

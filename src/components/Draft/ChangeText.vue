@@ -14,3 +14,18 @@
 		</div>
 	</div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      heading: "Heading"
+    }
+  },
+  methods: {
+    setNewHeading() {
+      this.$store.dispatch("setActiveHeading", this.heading);
+    }
+  }
+}
+</script>
