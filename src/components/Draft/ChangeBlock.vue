@@ -29,7 +29,6 @@ export default {
 	data() {
 		return {
 			height: "",
-			heading: "",
 		};
 	},
 	mixins: [staticMixin],
@@ -37,33 +36,22 @@ export default {
 		...mapGetters(["getActiveDraftId"]),
 	},
 	created() {
-		this.height = this.replaceNotDigits(
-			document.getElementById(this.getActiveDraftId).style.height
-		);
+		this.setActiveHeight(this.getActiveDraftId);
 	},
 	mounted() {
-		/*this.$store.watch(
-				(state, getters) => getters.getActiveGrid,
-				(newValue, oldValue) => {
-					if (
-						this.type !== newValue &&
-						this.gridOptions &&
-						this.gridOptions.api
-					) {
-						this.currentIndex = null;
-						this.gridOptions.api.deselectAll();
-						this.gridOptions.api.clearFocusedCell();
-						this.gridOptions.api.redrawRows();
-					} else {
-						this.$nextTick().then(() => {
-							this.currentIndex = this.currentIndex ? this.currentIndex : 0;
-							this.returnFocus();
-						});
-					}
-				}
-			);*/
+		this.$store.watch(
+			(state, getters) => getters.getActiveDraftId,
+			(newValue, oldValue) => {
+				this.setActiveHeight(newValue);
+			}
+		);
 	},
 	methods: {
+		setActiveHeight(active_id) {
+			this.height = this.replaceNotDigits(
+				document.getElementById(active_id).style.height
+			);
+		},
 		setNewHeight() {
 			this.$store.dispatch("setActiveElementHeight", this.height);
 		},

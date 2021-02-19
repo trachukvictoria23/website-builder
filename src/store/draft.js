@@ -65,6 +65,10 @@ export default {
 		setActiveHeading({ state }, heading) {
 			const active_el = document.getElementById(state.active_draft_id);
 			active_el.innerHTML = heading;
+		},
+		setActiveElementFontSize({ state }, fontSize) {
+			const active_el = document.getElementById(state.active_draft_id);
+			active_el.style.fontSize = fontSize + "px";
 		}
 	}
 };
