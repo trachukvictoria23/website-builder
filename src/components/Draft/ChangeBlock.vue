@@ -29,6 +29,28 @@
 				height: '',
 			};
 		},
+		mounted() {
+			/*this.$store.watch(
+				(state, getters) => getters.getActiveGrid,
+				(newValue, oldValue) => {
+					if (
+						this.type !== newValue &&
+						this.gridOptions &&
+						this.gridOptions.api
+					) {
+						this.currentIndex = null;
+						this.gridOptions.api.deselectAll();
+						this.gridOptions.api.clearFocusedCell();
+						this.gridOptions.api.redrawRows();
+					} else {
+						this.$nextTick().then(() => {
+							this.currentIndex = this.currentIndex ? this.currentIndex : 0;
+							this.returnFocus();
+						});
+					}
+				}
+			);*/
+		},
 		mixins: [staticMixin],
 		computed: {
 			...mapGetters(['getActiveDraftId']),
