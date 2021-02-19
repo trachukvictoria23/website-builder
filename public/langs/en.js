@@ -4,5 +4,6 @@ export default {
 	logIn: 'Log in',
 	register: 'Register',
 	confirmPassword: 'Confirm password',
-	addNewBlock: 'Add new block'
+	addNewBlock: 'Add new block',
+	heading: 'Heading'
 };

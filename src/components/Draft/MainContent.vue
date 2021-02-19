@@ -8,7 +8,7 @@
 
 <style lang="scss" scoped>
 	.main-content {
-		width: calc(100% - 512px);
+		width: calc(100% - 400px);
 		height: 100%;
 		overflow-y: auto;
 	}

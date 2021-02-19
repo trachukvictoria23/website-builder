@@ -43,7 +43,7 @@
 		display: flex;
 		flex-direction: column;
 		height: 100%;
-		width: 512px;
+		width: $sidebarWidth;
 		border-right: 1px solid;
 		padding: 24px;
 		&__add {
