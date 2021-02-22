@@ -27,6 +27,12 @@
 			/>
 			<span>px</span>
 		</div>
+
+		<!--<v-color-picker
+      class="ma-2"
+      :swatches="swatches"
+      show-swatches
+    ></v-color-picker> -->
 	</div>
 </template>
 
@@ -38,7 +44,8 @@ export default {
 	data() {
 		return {
 			heading: "Heading",
-			font_size: "32"
+			font_size: "32",
+			picker: ""
 		};
 	},
 	created() {
@@ -59,8 +66,10 @@ export default {
 		setActiveHeading(active_id) {
 			if (!active_id) return;
 			this.heading = document.getElementById(active_id).innerHTML;
-			this.font_size = this.replaceNotDigits(document.getElementById(active_id).style.fontSize)
-			if (!this.font_size) this.font_size = "32"
+			this.font_size = this.replaceNotDigits(
+				document.getElementById(active_id).style.fontSize
+			);
+			if (!this.font_size) this.font_size = "32";
 		},
 		setNewFontSize() {
 			this.$store.dispatch("setActiveElementFontSize", this.font_size);
