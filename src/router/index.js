@@ -9,25 +9,30 @@ function lazyLoadView(view) {
 
 const routes = [
 	{
-		path: '/',
-		name: 'Login',
-		component: lazyLoadView('Login'),
+		path: "/",
+		name: "Login",
+		component: lazyLoadView("Login")
 	},
 	{
-		path: '/registration',
-		name: 'Registration',
-		component: lazyLoadView('Registration'),
+		path: "/registration",
+		name: "Registration",
+		component: lazyLoadView("Registration")
 	},
 	{
-		path: '/home',
-		name: 'Home',
-		component: lazyLoadView('Home'),
+		path: "/home",
+		name: "Home",
+		component: lazyLoadView("Home")
 	},
 	{
-		path: '/draft',
-		name: 'Draft',
-		component: lazyLoadView('Draft'),
+		path: "/draft",
+		name: "Draft",
+		component: lazyLoadView("Draft")
 	},
+	{
+		path: "/preview",
+		name: "Preview",
+		component: lazyLoadView("Preview")
+	}
 ];
 
 const router = new VueRouter({
