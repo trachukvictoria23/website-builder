@@ -1,5 +1,6 @@
 export default {
 	state: {
+		draft_content: null,
 		active_draft_id: null,
 		active_draft_type: null,
 		elements_draft: []
@@ -10,6 +11,9 @@ export default {
 		},
 		getActiveDraftType(state) {
 			return state.active_draft_type;
+		},
+		getDraftContent(state) {
+			return state.draft_content;
 		}
 	},
 	mutations: {
@@ -18,6 +22,9 @@ export default {
 		},
 		setActiveDraftType(state, payload) {
 			state.active_draft_type = payload;
+		},
+		saveDraftContent(state, payload) {
+			state.draft_content = payload;
 		}
 	},
 	actions: {

@@ -1,11 +1,15 @@
 <template>
-	<div></div>
+	<div v-html="getDraftContent"></div>
 </template>
 
 <script>
+import { mapGetters } from "vuex"
+
 export default {
-	beforeMount() {
-		console.log("router", this.$route);
+	computed: {
+		...mapGetters([
+			'getDraftContent'
+		])
 	}
 };
 </script>
