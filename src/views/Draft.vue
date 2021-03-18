@@ -1,5 +1,6 @@
 <template>
 	<div class="draft">
+		<button class="draft__preview" @click="preview">Preview</button>
 		<sidebar />
 		<main-content />
 	</div>
@@ -8,23 +9,19 @@
 <script>
 import Sidebar from "@/components/Draft/Sidebar";
 import MainContent from "@/components/Draft/MainContent";
-import { mapGetters } from "vuex";
 
 export default {
-	/*beforeRouteEnter(to, from, next) {
-		next(vm => {
-            console.log('next')
-            console.log('check router', document.getElementById("main"), vm.getDraftContent)
-			document.getElementById("main").innerHTML = vm.getDraftContent;
-			next();
-		});
-	},*/
-	computed: {
-		...mapGetters(["getDraftContent"])
-	},
 	components: {
 		Sidebar,
 		MainContent
+	},
+	methods: {
+		preview() {
+			const content = document.getElementById('main').innerHTML;
+			this.$store.commit("saveDraftContent", content);
+			this.$router.push({ name: "Preview" });
+			//this.$router.push({ name: 'Preview', params: { content} })
+		}
 	}
 };
 </script>
@@ -34,5 +31,12 @@ export default {
 	display: flex;
 	height: 100%;
 	width: 100%;
+	position: relative;
+	&__preview {
+		position: absolute;
+		top: 40px;
+		right: 40px;
+		z-index: 5;
+	}
 }
 </style>

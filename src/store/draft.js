@@ -28,6 +28,10 @@ export default {
 		}
 	},
 	actions: {
+		setActiveEvents({ state }) {
+			const main = document.getElementById("main");
+			
+		},
 		addNewBlock({ state, dispatch }) {
 			const main = document.getElementById("main");
 			const new_el = document.createElement("div");

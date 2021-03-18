@@ -1,18 +1,17 @@
 <template>
-	<div class="main-content" id="main">
-		<button class="main-content__preview" @click="preview">Preview</button>
-	</div>
+	<div class="main-content" id="main"></div>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-	methods: {
-		preview() {
-			const content = this.$el.innerHTML;
-			this.$store.commit("saveDraftContent", content);
-			this.$router.push({ name: "Preview" });
-			//this.$router.push({ name: 'Preview', params: { content} })
-		}
+	computed: {
+		...mapGetters(["getDraftContent"])
+	},
+	mounted() {
+		this.$el.innerHTML = this.getDraftContent;
+		this.$store.dispatch('setActiveEvents')
 	}
 };
 </script>
@@ -22,12 +21,5 @@ export default {
 	width: calc(100% - 400px);
 	height: 100%;
 	overflow-y: auto;
-	position: relative;
-	&__preview {
-		position: absolute;
-		top: 40px;
-		right: 40px;
-		z-index: 5;
-	}
 }
 </style>
