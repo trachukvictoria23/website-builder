@@ -3,6 +3,7 @@
 		<label for="heading">
 			{{ $t("heading") }}
 		</label>
+		{{ heading }}
 		<div>
 			<textarea
 				name="heading"

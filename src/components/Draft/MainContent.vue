@@ -11,7 +11,9 @@ export default {
 	},
 	mounted() {
 		this.$el.innerHTML = this.getDraftContent;
-		this.$store.dispatch('setActiveEvents')
+		this.$store.commit("setActiveDraftId", null);
+		this.$store.commit("setActiveDraftType", null)
+		this.$store.dispatch("setActiveEvents");
 	}
 };
 </script>

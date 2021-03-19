@@ -28,9 +28,26 @@ export default {
 		}
 	},
 	actions: {
-		setActiveEvents({ state }) {
+		setActiveEvents({ dispatch }) {
 			const main = document.getElementById("main");
-			
+			let active_elements_id = [];
+			let children = main.childNodes;
+			children.forEach(child => {
+				active_elements_id.push(child.id);
+				document
+					.getElementById(child.id)
+					.addEventListener("click", function(e) {
+						e.stopPropagation();
+						dispatch("setActiveElement", e.target);
+					});
+				child.childNodes.forEach(el => {
+					active_elements_id.push(el.id);
+					document.getElementById(el.id).addEventListener("click", function(e) {
+						e.stopPropagation();
+						dispatch("setActiveElement", e.target);
+					});
+				});
+			});
 		},
 		addNewBlock({ state, dispatch }) {
 			const main = document.getElementById("main");
@@ -43,6 +60,7 @@ export default {
 			new_el.setAttribute("id", new_id);
 			new_el.setAttribute("style", default_styles);
 			new_el.addEventListener("click", function(e) {
+				e.stopPropagation();
 				dispatch("setActiveElement", e.target);
 			});
 			main.appendChild(new_el);
@@ -57,7 +75,8 @@ export default {
 			new_el.setAttribute("id", new_id);
 			new_el.innerHTML = "Heading";
 			new_el.addEventListener("click", function(e) {
-				dispatch("setActiveElement", e.target);
+				e.stopPropagation();
+				return dispatch("setActiveElement", e.target);
 			});
 			active_block.appendChild(new_el);
 		},

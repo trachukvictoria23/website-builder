@@ -28,12 +28,12 @@ import staticMixin from "@/mixins/staticMixin";
 export default {
 	data() {
 		return {
-			height: "",
+			height: ""
 		};
 	},
 	mixins: [staticMixin],
 	computed: {
-		...mapGetters(["getActiveDraftId"]),
+		...mapGetters(["getActiveDraftId"])
 	},
 	created() {
 		this.setActiveHeight(this.getActiveDraftId);
@@ -48,6 +48,7 @@ export default {
 	},
 	methods: {
 		setActiveHeight(active_id) {
+			if (!active_id) return;
 			this.height = this.replaceNotDigits(
 				document.getElementById(active_id).style.height
 			);
@@ -57,8 +58,8 @@ export default {
 		},
 		addHeading() {
 			this.$store.dispatch("addNewHeading");
-		},
-	},
+		}
+	}
 };
 </script>
 
