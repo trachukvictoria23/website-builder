@@ -3,7 +3,6 @@
 		<label for="heading">
 			{{ $t("heading") }}
 		</label>
-		{{ heading }}
 		<div>
 			<textarea
 				name="heading"
@@ -28,7 +27,7 @@
 			/>
 			<span>px</span>
 		</div>
-
+		<swatches-picker v-model="color" @input="setNewColor"/>
 		<!--<v-color-picker
       class="ma-2"
       :swatches="swatches"
@@ -39,14 +38,19 @@
 
 <script>
 import staticMixin from "@/mixins/staticMixin";
+import { Swatches } from 'vue-color'
 
 export default {
+	components: {
+		'swatches-picker': Swatches
+	},
 	mixins: [staticMixin],
 	data() {
 		return {
 			heading: "Heading",
 			font_size: "32",
-			picker: ""
+			picker: "",
+			color: '#333'
 		};
 	},
 	created() {
@@ -74,6 +78,9 @@ export default {
 		},
 		setNewFontSize() {
 			this.$store.dispatch("setActiveElementFontSize", this.font_size);
+		},
+		setNewColor() {
+			this.$store.dispatch("setActiveElementColor", this.color.hex);
 		}
 	}
 };

@@ -99,6 +99,10 @@ export default {
 		setActiveElementFontSize({ state }, fontSize) {
 			const active_el = document.getElementById(state.active_draft_id);
 			active_el.style.fontSize = fontSize + "px";
+		},
+		setActiveElementColor({state}, color) {
+			const active_el = document.getElementById(state.active_draft_id);
+			active_el.style.color = color;
 		}
 	}
 };
