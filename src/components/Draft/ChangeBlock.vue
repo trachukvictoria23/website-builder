@@ -49,9 +49,9 @@ export default {
 	methods: {
 		setActiveHeight(active_id) {
 			if (!active_id) return;
-			this.height = this.replaceNotDigits(
-				document.getElementById(active_id).style.height
-			);
+			const active_el = document.getElementById(active_id);
+			if (!active_el) return;
+			this.height = this.replaceNotDigits(active_el.style.height);
 		},
 		setNewHeight() {
 			this.$store.dispatch("setActiveElementHeight", this.height);

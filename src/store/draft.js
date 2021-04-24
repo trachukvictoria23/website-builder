@@ -1,3 +1,5 @@
+import { bus } from "@/main";
+
 export default {
 	state: {
 		draft_content: null,
@@ -17,8 +19,9 @@ export default {
 		}
 	},
 	mutations: {
-		setActiveDraftId(state, payload) {
-			state.active_draft_id = payload;
+		setActiveDraftId(state, id) {
+			state.active_draft_id = id;
+			//bus.$emit("change-id", id, document.getElementById(id));
 		},
 		setActiveDraftType(state, payload) {
 			state.active_draft_type = payload;
@@ -100,7 +103,7 @@ export default {
 			const active_el = document.getElementById(state.active_draft_id);
 			active_el.style.fontSize = fontSize + "px";
 		},
-		setActiveElementColor({state}, color) {
+		setActiveElementColor({ state }, color) {
 			const active_el = document.getElementById(state.active_draft_id);
 			active_el.style.color = color;
 		}
