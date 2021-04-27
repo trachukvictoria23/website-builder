@@ -1,6 +1,7 @@
 <template>
 	<div class="draft">
-		<button class="draft__preview" @click="preview">Preview</button>
+		<span>{{ options }}</span>
+		<button class="draft__preview" @click="add">Preview</button>
 		<sidebar />
 		<main-content />
 	</div>
@@ -10,17 +11,35 @@
 import Sidebar from "@/components/Draft/Sidebar";
 import MainContent from "@/components/Draft/MainContent";
 
+import { db } from "../main";
+
 export default {
+	data() {
+		return {
+			options: []
+		};
+	},
 	components: {
 		Sidebar,
 		MainContent
 	},
+	firestore() {
+		return {
+			options: db.collection("options")
+		};
+	},
 	methods: {
 		preview() {
-			const content = document.getElementById('main').innerHTML;
+			const content = document.getElementById("main").innerHTML;
 			this.$store.commit("saveDraftContent", content);
 			this.$router.push({ name: "Preview" });
 			//this.$router.push({ name: 'Preview', params: { content} })
+		},
+		add() {
+			let option = {
+				option2: 'hello'
+			}
+			db.collection("options").add({ 'option3': 'ggg' });
 		}
 	}
 };
