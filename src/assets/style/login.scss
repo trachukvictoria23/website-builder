@@ -5,22 +5,29 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	background: lightblue;
+	background: $color-gray;
 	position: absolute;
+	border-radius: $default-border-radius;
 	left: 50%;
 	top: 50%;
-	transform: translateX(-50%) translateY(-50%);
+	transform: translateX(-20%) translateY(-50%);
+	box-shadow: $default-box-shadow;
+	//border: 1px solid $color-blue;
 	&__item {
 		display: flex;
 		flex-direction: column;
-		label {
-			margin-bottom: 4px;
-		}
 		input {
+			height: 40px !important;
+			width: 320px !important;
 		}
 	}
-	&__submit {
-		width: 144px;
-		height: 40px;
+	&__register {
+		text-decoration: underline;
+		margin-top: 8px;
+		border: none;
+		background: none;
+		outline: none;
+		cursor: pointer;
+		font-size: 16px;
 	}
 }

@@ -1,34 +1,61 @@
 <template>
 	<div class="change-block">
-		<div class="flex align-center justify-between">
+		<div class="sidebar-item">
 			<label for="height">
 				{{ $t("height") }}
 			</label>
-			<div>
+			<div class="content">
 				<input
 					name="height"
 					minLength="1"
 					maxLength="3"
 					v-model="height"
-					class="sidebar__input"
+					class="app-input"
 					@keydown="isNumber"
 					@blur="setNewHeight"
 				/>
 				<span>px</span>
 			</div>
 		</div>
-		<button @click="addHeading">Add heading</button>
+		<div class="sidebar-item">
+			<swatches-picker v-model="color" @input="setNewColor" />
+		</div>
+		<div class="sidebar-item">
+			<button class="add-button" @click="addElement('h1')">
+				<img src="img/plus.svg" />Додати заголовок
+			</button>
+		</div>
+		<div class="sidebar-item">
+			<button class="add-button" @click="addElement('p')">
+				<img src="img/plus.svg" />Додати текст
+			</button>
+		</div>
+		<div class="sidebar-item">
+			<button class="add-button" @click="addElement('p')">
+				<img src="img/plus.svg" />Додати картинку
+			</button>
+		</div>
+		<div class="sidebar-item">
+			<button class="add-button" @click="addElement('p')">
+				<img src="img/plus.svg" />Додати форму
+			</button>
+		</div>
 	</div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import staticMixin from "@/mixins/staticMixin";
+import { Swatches } from "vue-color";
 
 export default {
+	components: {
+		"swatches-picker": Swatches
+	},
 	data() {
 		return {
-			height: ""
+			height: "",
+			color: "#FFFFFF"
 		};
 	},
 	mixins: [staticMixin],
@@ -52,18 +79,23 @@ export default {
 			const active_el = document.getElementById(active_id);
 			if (!active_el) return;
 			this.height = this.replaceNotDigits(active_el.style.height);
+			this.color = active_el.style.color;
 		},
 		setNewHeight() {
-			this.$store.dispatch("setActiveElementHeight", this.height);
+			this.$store.dispatch("setActiveElementOption", {
+				val: this.height + "px",
+				name: "height"
+			});
 		},
-		addHeading() {
-			this.$store.dispatch("addNewHeading");
+		addElement(tag) {
+			this.$store.dispatch("addNewTextElement", tag);
+		},
+		setNewColor() {
+			this.$store.dispatch("setActiveElementOption", {
+				val: this.color.hex,
+				name: "background"
+			});
 		}
 	}
 };
 </script>
-
-<style lang="scss" scoped>
-.change-block {
-}
-</style>

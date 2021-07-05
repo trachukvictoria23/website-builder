@@ -20,7 +20,7 @@ export default {
 
 <style lang="scss" scoped>
 .main-content {
-	width: calc(100% - 400px);
+	width: calc(100% - 300px);
 	height: 100%;
 	overflow-y: auto;
 }

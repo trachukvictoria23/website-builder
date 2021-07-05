@@ -9,27 +9,14 @@ import store from "./store";
 import { mask } from "vue-the-mask";
 //import vuetify from '@/plugins/vuetify';
 
-
 import { firestorePlugin } from "vuefire";
 Vue.use(firestorePlugin);
 import firebase from "firebase/app";
 import "firebase/firestore";
 
-/*const admin = require("firebase-admin");
-
-const serviceAccount = require("../key.json");
-
-admin.initializeApp({
-	credential: admin.credential.cert(serviceAccount),
-	databaseURL:
-		"https://website-builder-d45ea-default-rtdb.europe-west1.firebasedatabase.app"
-});
-*/
 export const db = firebase
 	.initializeApp({
 		projectId: "website-builder-d45ea"
-		//databaseURL:
-		//"https://website-builder-d45ea-default-rtdb.europe-west1.firebasedatabase.app/"
 	})
 	.firestore();
 
@@ -38,6 +25,9 @@ export { Timestamp, GeoPoint };
 
 Vue.use(Vuelidate);
 Vue.directive("mask", mask);
+
+export const bus = new Vue();
+window.$bus = bus;
 
 const requireComponent = require.context(
 	"./components/app",
@@ -58,12 +48,8 @@ requireComponent.keys().forEach(fileName => {
 	Vue.component(componentName, componentConfig.default || componentConfig);
 });
 
-export const bus = new Vue();
-window.$bus = bus;
-
 new Vue({
 	el: "#app",
-	//vuetify,
 	i18n,
 	router,
 	store,

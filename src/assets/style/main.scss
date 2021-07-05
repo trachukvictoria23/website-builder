@@ -1,21 +1,129 @@
-@import './helpers.scss';
-
+@import "./helpers.scss";
 
 * {
-    box-sizing: border-box;;
+	box-sizing: border-box;
+	font-family: system-ui;
 }
 
-#app, body, html {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    box-sizing: border-box;
+#app,
+body,
+html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 #app {
-    position: relative;
+	position: relative;
+	padding-top: 84px;
 }
 
 .input-error {
-    border-color: red;
+	border-color: red;
+}
+
+.add-button {
+	//width: 320px;
+	padding: 0 12px;
+	height: 32px;
+	box-shadow: $default-box-shadow;
+	background: white;
+	color: black;
+	font-size: 16px;
+	border: none;
+	outline: none;
+	border-radius: $default-border-radius;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	img {
+		height: 16px;
+		margin-right: 8px;
+	}
+	&:hover {
+		background: rgba(255, 255, 255, 0.75);
+	}
+}
+
+.submit-button {
+	width: 320px;
+	height: 40px;
+	background: #191970;
+	color: white;
+	font-size: 16px;
+	border: none;
+	outline: none;
+	border-radius: $default-border-radius;
+	cursor: pointer;
+	transition: 0.1s;
+	&:hover {
+		background: rgba(25, 25, 112, 0.75);
+	}
+	&--danger {
+		background: $color-danger !important;
+		&:hover {
+			background: rgba(220, 20, 60, 0.75) !important;
+		}
+	}
+}
+
+.preview-button {
+	position: absolute;
+	left: 50%;
+	transform: translateX(calc(100px));
+	padding: 0 16px;
+	width: fit-content !important;
+	height: 30px !important;
+	top: -32px;
+	z-index: 11;
+}
+
+.draft {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	position: relative;
+}
+
+.app-input {
+	//height: 40px;
+	//width: 320px;
+	width: 100%;
+	height: 32px;
+	box-shadow: $default-box-shadow;
+	background: white !important;
+	border: none;
+	outline: none;
+	padding: 10px;
+	font-size: 16px;
+}
+
+.app-textarea {
+	min-height: 96px;
+	height: auto;
+	max-width: 100%;
+}
+
+.vc-swatches {
+	width: 248px !important;
+}
+
+label {
+	margin-bottom: 4px;
+}
+
+.sidebar-item:not(:first-child) {
+	margin-top: 20px;
+}
+
+.sidebar-item {
+	.content {
+		display: flex;
+		align-items: center;
+		input {
+			margin-top: 4px;
+			margin-right: 4px;
+		}
+	}
 }

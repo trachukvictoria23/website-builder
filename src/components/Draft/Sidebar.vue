@@ -1,11 +1,52 @@
 <template>
 	<div class="sidebar">
+		<div class="sidebar-item">
+			<label for="margin">
+				Відступ
+			</label>
+			<div class="content">
+				<input
+					name="margin"
+					minLength="0"
+					maxLength="8"
+					v-model="margin"
+					class="app-input"
+					@keydown="isNumber"
+				/>
+				<span>px</span>
+			</div>
+		</div>
+		<div class="sidebar-item mb-20">
+			<label for="padding">
+				Внутрішній відступ
+			</label>
+			<div class="content">
+				<input
+					name="padding"
+					minLength="0"
+					maxLength="8"
+					v-model="padding"
+					class="app-input"
+					@keydown="isNumber"
+				/>
+				<span>px</span>
+			</div>
+		</div>
 		<component :is="setActiveComponent" />
-
-		<div class="sidebar__add" @click="addNewBlock">
-			<span>
-				{{ $t("addNewBlock") }}
-			</span>
+		<div class="sidebar__actions">
+			<button
+				class="submit-button submit-button--danger"
+				@click="$store.dispatch('removeElement')"
+			>
+				<span>
+					{{ $t("removeEl") }}
+				</span>
+			</button>
+			<button class="submit-button" @click="addNewBlock">
+				<span>
+					{{ $t("addNewBlock") }}
+				</span>
+			</button>
 		</div>
 	</div>
 </template>
@@ -22,6 +63,12 @@ export default {
 		ChangeText,
 		ChangeInput,
 		ChangeBlock
+	},
+	data() {
+		return {
+			margin: 0,
+			padding: 0
+		};
 	},
 	mixins: [staticMixin],
 	computed: {
@@ -43,19 +90,29 @@ export default {
 .sidebar {
 	display: flex;
 	flex-direction: column;
-	height: 100%;
+	height: calc(100% + 16px);
 	width: $sidebarWidth;
 	border-right: 1px solid;
 	padding: 24px;
-	&__add {
-		width: 100%;
+	padding-top: 40px;
+	margin-top: -16px;
+	background: $color-gray;
+	&__actions {
+		margin-top: auto;
+		button {
+			width: 100%;
+			&:last-child {
+				margin-top: 10px;
+			}
+		}
+		/*width: 100%;
 		border: 1px solid;
 		height: 40px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		margin-top: auto;
-		cursor: pointer;
+		cursor: pointer;*/
 	}
 	&__input {
 		outline: none;
